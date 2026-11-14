@@ -1,0 +1,26 @@
+cat > .gitignore <<'EOF'
+# Go binaries
+*.exe
+*.test
+*.out
+/bin/
+/dist/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# Test coverage
+coverage.out
+coverage.html
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+EOF
