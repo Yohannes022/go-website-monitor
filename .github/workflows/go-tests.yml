@@ -1,0 +1,39 @@
+
+name: Go Website Monitor Tests
+
+on:
+  push:
+    paths:
+      - "projects/go-website-monitor/**"
+      - ".github/workflows/go-tests.yml"
+
+  pull_request:
+    paths:
+      - "projects/go-website-monitor/**"
+      - ".github/workflows/go-tests.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: projects/go-website-monitor
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+
+      - name: Verify Go version
+        run: go version
+
+      - name: Run tests
+        run: go test -race -v ./...
+
+      - name: Run Go vet
+        run: go vet ./...

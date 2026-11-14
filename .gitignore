@@ -1,26 +1,28 @@
-cat > .gitignore <<'EOF'
+
 # Go binaries
 *.exe
+*.exe~
+*.dll
+*.so
+*.dylib
 *.test
 *.out
+
+# Build directories
 /bin/
-/dist/
+/build/
 
-# Environment variables and secrets
-.env
-.env.*
-
-# Logs
-*.log
-
-# Test coverage
-coverage.out
-coverage.html
-
-# macOS
-.DS_Store
+# Go workspace
+go.work
+go.work.sum
 
 # IDE
-.idea/
 .vscode/
-EOF
+.idea/
+
+# Operating system
+.DS_Store
+
+# Generated reports
+reports/*.json
+reports/*.jsonl
