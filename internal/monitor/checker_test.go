@@ -12,6 +12,7 @@ import (
 	"net/http/httptest"
 	"testing"
 	"time"
+	"math"
 )
 
 func TestCheckURLSuccess(t *testing.T) {
@@ -200,7 +201,7 @@ func TestBuildSummary(t *testing.T) {
 		)
 	}
 
-	if summary.AvailabilityPercent != 66.66666666666666 {
+	if math.Abs(summary.AvailabilityPercent-66.66666666666666) > 0.0001 {
 		t.Errorf(
 			"Unexpected availability: %f",
 			summary.AvailabilityPercent,
